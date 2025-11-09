@@ -34,7 +34,7 @@ jobs:
         working-directory: ./miketestapp
 
       - name: Build for Development
-        run: npm run build -- --configuration development --base-href /test-github-actions/dev/
+        run: npm run build -- --configuration development --base-href /dev/
         working-directory: ./miketestapp
 
       - name: Deploy to GitHub Pages (Dev)

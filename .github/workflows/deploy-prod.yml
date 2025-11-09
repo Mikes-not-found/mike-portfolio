@@ -38,7 +38,7 @@ jobs:
         working-directory: ./miketestapp
 
       - name: Build for Production
-        run: npm run build -- --configuration production --base-href /test-github-actions/
+        run: npm run build -- --configuration production --base-href /
         working-directory: ./miketestapp
 
       - name: Deploy to GitHub Pages (Production)
@@ -46,4 +46,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./miketestapp/dist/miketestapp/browser
+          cname: michelescarciglia.com
           commit_message: 'Deploy production build'
