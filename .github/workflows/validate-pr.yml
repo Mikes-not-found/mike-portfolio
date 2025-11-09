@@ -22,31 +22,38 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+          cache-dependency-path: miketestapp/package-lock.json
 
       - name: Install dependencies
         run: npm ci
+        working-directory: ./miketestapp
 
       - name: Run linter
         run: npm run lint
         continue-on-error: false
+        working-directory: ./miketestapp
 
       - name: Run tests
         run: npm test
         continue-on-error: false
+        working-directory: ./miketestapp
 
       - name: Build project
         run: npm run build
         continue-on-error: false
+        working-directory: ./miketestapp
 
       - name: Code quality analysis
         run: |
           echo "🔍 Analyzing code quality..."
           npx eslint . --ext .js,.jsx,.ts,.tsx --max-warnings 0
         continue-on-error: true
+        working-directory: ./miketestapp
 
       - name: Check for security vulnerabilities
         run: npm audit --audit-level=moderate
         continue-on-error: true
+        working-directory: ./miketestapp
 
       - name: Report results
         if: always()
