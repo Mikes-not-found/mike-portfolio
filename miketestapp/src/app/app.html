@@ -25,6 +25,11 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
   }
 
   /* Environment Banner */
@@ -77,6 +82,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
   }
 
   .logo {
@@ -107,6 +113,7 @@
     transition: all 0.3s;
     cursor: pointer;
     position: relative;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .nav-links a::after {
@@ -273,6 +280,8 @@
     font-size: 1.1rem;
     position: relative;
     overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
   }
 
   .btn::before {
@@ -454,8 +463,14 @@
 
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
+  }
+
+  @media (max-width: 400px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   .project-card {
@@ -467,6 +482,7 @@
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     overflow: hidden;
     position: relative;
+    will-change: transform;
   }
 
   .project-card::before {
@@ -496,6 +512,27 @@
     padding: 2rem;
     text-align: center;
     background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.2));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-icon img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .project-card:hover .project-icon img {
+    transform: scale(1.1);
+  }
+
+  .project-icon.emoji {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
   }
 
   .project-content {
@@ -644,7 +681,41 @@
   }
 
   /* Responsive */
+  @media (max-width: 1024px) {
+    nav {
+      padding: 1rem 1.5rem;
+    }
+
+    .nav-content {
+      gap: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+    }
+
+    .hero h2 {
+      font-size: 2.2rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+    }
+
+    section {
+      padding: 6rem 1.5rem;
+    }
+
+    .section-title {
+      font-size: 3rem;
+    }
+  }
+
   @media (max-width: 968px) {
+    .hero {
+      padding: 6rem 1.5rem 4rem;
+    }
+
     .hero h1 {
       font-size: 3.5rem;
     }
@@ -653,9 +724,18 @@
       font-size: 2rem;
     }
 
-    .about-content,
-    .skills-grid {
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .about-content {
       grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .nav-links {
@@ -672,29 +752,229 @@
 
     .btn {
       width: 100%;
+      padding: 1rem 2rem;
+      font-size: 1rem;
     }
 
     .section-title {
       font-size: 2.5rem;
     }
+
+    .about-text,
+    .skills-container {
+      padding: 2rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    section {
+      padding: 5rem 1.5rem;
+    }
   }
 
   @media (max-width: 640px) {
+    nav {
+      padding: 0.75rem 1rem;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+    }
+
+    .nav-links {
+      gap: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .hero {
+      min-height: 90vh;
+      padding: 5rem 1rem 3rem;
+    }
+
     .hero h1 {
       font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.9rem 1.8rem;
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 4rem 1rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .about-text,
+    .skills-container {
+      padding: 1.5rem;
+      border-radius: 1.5rem;
+    }
+
+    .about-text h3,
+    .skills-container h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .skill-tag {
+      padding: 0.75rem 0.5rem;
+      font-size: 0.85rem;
     }
 
     .projects-grid {
       grid-template-columns: 1fr;
     }
 
+    .project-card {
+      border-radius: 1.5rem;
+    }
+
+    .project-icon {
+      font-size: 3rem;
+      padding: 1.5rem;
+    }
+
+    .project-icon img {
+      height: 180px;
+    }
+
+    .project-icon.emoji {
+      min-height: 180px;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+    }
+
+    .project-card p {
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-tags {
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-tag {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    .project-links {
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .project-links a {
+      font-size: 0.9rem;
+    }
+
+    .contact-text {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
     .contact-links {
-      gap: 2rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
 
     .contact-links a {
       width: 60px;
       height: 60px;
+    }
+
+    .contact-links svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    footer {
+      padding: 2rem 1rem;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero h2 {
+      font-size: 1.3rem;
+    }
+
+    .nav-links {
+      gap: 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .project-icon img {
+      height: 150px;
+    }
+
+    .project-icon.emoji {
+      min-height: 150px;
+      font-size: 2.5rem;
+    }
+
+    .contact-links a {
+      width: 50px;
+      height: 50px;
+    }
+
+    .contact-links svg {
+      width: 25px;
+      height: 25px;
     }
   }
 </style>
@@ -772,7 +1052,13 @@
     <div class="projects-grid">
       @for (project of projects(); track project.title) {
         <div class="project-card reveal">
-          <div class="project-icon">{{ project.image }}</div>
+          @if (project.image && project.image.startsWith('http')) {
+            <div class="project-icon">
+              <img [src]="project.image" [alt]="project.title + ' preview'" loading="lazy" />
+            </div>
+          } @else {
+            <div class="project-icon emoji">{{ project.image }}</div>
+          }
           <div class="project-content">
             <h3>{{ project.title }}</h3>
             <p>{{ project.description }}</p>
@@ -830,7 +1116,7 @@
 </section>
 
 <footer>
-  <p>&copy; 2025 {{ name() }}. Realizzato con ❤️ usando Angular & GitHub Actions.</p>
+  <p>&copy; 2025 {{ name() }}. Michele scarciglia</p>
 </footer>
 
 <router-outlet />

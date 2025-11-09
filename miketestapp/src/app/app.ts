@@ -25,24 +25,25 @@ export class App implements OnInit {
 
   protected readonly projects = signal<Project[]>([
     {
-      title: 'CI/CD Portfolio',
-      description: 'Portfolio personale con CI/CD automatizzato su GitHub Actions, deploy su GitHub Pages con ambienti dev/prod separati.',
-      technologies: ['Angular 20', 'GitHub Actions', 'Jest', 'TypeScript'],
-      github: 'https://github.com/Mikes-not-found/test-github-actions',
-      demo: 'https://michelescarciglia.com',
-      image: '🚀'
+      title: 'Daisy App',
+      description: 'Smart Task & Expense Manager - Gestione task quotidiani con integrazione Open Banking per tracciamento automatico delle spese e insights finanziari in tempo reale.',
+      technologies: ['TypeScript', 'React Native', 'Node.js', 'MongoDB', 'Express', 'Open Banking API'],
+      github: 'https://github.com/Mikes-not-found/daisy_app',
+      image: 'https://raw.githubusercontent.com/Mikes-not-found/daisy_app/main/frontend/assets/dashboard.jpg'
     },
     {
-      title: 'E-commerce Platform',
-      description: 'Piattaforma e-commerce completa con gestione prodotti, carrello e pagamenti integrati con sistema di tracking ordini.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      image: '🛒'
+      title: 'Social App',
+      description: 'Clone di WhatsApp - Applicazione di messaggistica con comunicazione real-time, architettura scalabile con API backend, client frontend e layer WebSocket.',
+      technologies: ['JavaScript', 'WebSocket', 'CSS', 'HTML', 'Node.js'],
+      github: 'https://github.com/ProjectN23/SocialApp',
+      image: '💬'
     },
     {
-      title: 'Task Management App',
-      description: 'Applicazione per la gestione di task e progetti con team collaboration in tempo reale e dashboard analytics.',
-      technologies: ['Vue.js', 'Firebase', 'Tailwind CSS'],
-      image: '✓'
+      title: 'Boat User',
+      description: 'Applicazione Angular per la gestione barche - Frontend modulare con architettura component-based, testing integrato e interfaccia utente moderna.',
+      technologies: ['Angular 15', 'TypeScript', 'SCSS', 'HTML', 'Karma'],
+      github: 'https://github.com/ProjectN7/boat-user',
+      image: '⛵'
     }
   ]);
 
