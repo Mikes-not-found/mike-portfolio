@@ -20,6 +20,9 @@
     --gray-700: oklch(36.98% 0.014 302.71);
     --gray-400: oklch(70.9% 0.015 304.04);
 
+    --dev-bg: #fbbf24;
+    --prod-bg: #10b981;
+
     --red-to-pink-to-purple-vertical-gradient: linear-gradient(
       180deg,
       var(--orange-red) 0%,
@@ -167,6 +170,29 @@
     fill: var(--gray-900);
   }
 
+  .env-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .env-banner.development {
+    background: var(--dev-bg);
+    color: #78350f;
+  }
+
+  .env-banner.production {
+    background: var(--prod-bg);
+    color: #065f46;
+  }
+
   @media screen and (max-width: 650px) {
     .content {
       flex-direction: column;
@@ -181,6 +207,10 @@
     }
   }
 </style>
+
+<div class="env-banner" [class]="environment()">
+  {{ environment() === 'development' ? '🔧 DEVELOPMENT ENVIRONMENT' : '🚀 PRODUCTION ENVIRONMENT' }}
+</div>
 
 <main class="main">
   <div class="content">

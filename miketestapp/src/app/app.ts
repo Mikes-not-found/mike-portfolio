@@ -9,4 +9,10 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('miketestapp');
+  protected readonly environment = signal(this.getEnvironment());
+
+  private getEnvironment(): 'production' | 'development' {
+    const baseHref = document.querySelector('base')?.getAttribute('href') || '';
+    return baseHref.includes('/dev/') ? 'development' : 'production';
+  }
 }
