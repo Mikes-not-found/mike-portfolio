@@ -24,8 +24,10 @@ interface Experience {
 interface Education {
   degree: string;
   institution: string;
+  thesis?: string;
+  gpa?: string;
   period: string;
-  location: string;
+  location?: string;
   description?: string;
 }
 
@@ -35,6 +37,13 @@ interface Certification {
   date: string;
   credentialUrl?: string;
   logo?: string;
+}
+
+interface Skill {
+  name: string;
+  icon: string;
+  category: 'frontend' | 'backend' | 'database' | 'devops' | 'tools';
+  color: string;
 }
 
 @Component({
@@ -49,7 +58,20 @@ export class App implements OnInit {
   protected readonly environment = signal(this.getEnvironment());
   protected scrollY = signal(0);
   protected mobileMenuOpen = signal(false);
-  protected readonly professionalSummary = signal('Passionate Full Stack Developer with expertise in modern web technologies, cloud-native architectures, and DevOps methodologies. Specialized in building scalable, high-performance applications using Angular, React, Node.js, and Java Spring Framework.');
+  protected readonly professionalSummary = signal('Bachelor’s Degree in Software Engineering. Previously worked independently for small businesses, primarily as an IT instructor and Front-end Developer. Currently working as a Full Stack Developer.');
+
+  // Dynamic code symbols for background animation
+  protected readonly codeSymbols = [
+    '{ }', '[ ]', '< >', '( )', '/>', '</>',
+    'const', 'let', 'function', '=>', 'async',
+    'class', 'import', 'export', 'return',
+    '===', '!==', '&&', '||', '++', '--',
+    '@Component', '@Injectable', 'interface',
+    'Angular', 'React', 'Node.js', 'TypeScript',
+    'Git', 'Docker', 'CI/CD', 'API', 'REST',
+    'null', 'undefined', 'void', 'any', 'string',
+    '0101', '1010', '1100', '0011', 'true', 'false'
+  ];
 
   protected readonly projects = signal<Project[]>([
     {
@@ -75,14 +97,31 @@ export class App implements OnInit {
     }
   ]);
 
-  protected readonly skills = signal([
-    'Java', 'Spring Framework', 'Spring Boot',
-    'JavaScript', 'TypeScript', 'React', 'React Native', 'Angular',
-    'Node.js', 'Express.js', 'PHP',
-    'PostgreSQL', 'MySQL', 'MongoDB',
-    'Docker', 'Kubernetes', 'CI/CD',
-    'Git', 'GitHub Actions', 'Keycloak',
-    'REST API', 'Microservices', 'Agile/Scrum'
+  protected readonly skills = signal<Skill[]>([
+    // Frontend
+    { name: 'Angular', icon: 'devicon-angularjs-plain', category: 'frontend', color: '#DD0031' },
+    { name: 'React', icon: 'devicon-react-original', category: 'frontend', color: '#61DAFB' },
+    { name: 'React Native', icon: 'devicon-react-original', category: 'frontend', color: '#61DAFB' },
+    { name: 'JavaScript', icon: 'devicon-javascript-plain', category: 'frontend', color: '#F7DF1E' },
+    { name: 'TypeScript', icon: 'devicon-typescript-plain', category: 'frontend', color: '#3178C6' },
+
+    // Backend
+    { name: 'Java', icon: 'devicon-java-plain', category: 'backend', color: '#EA2D2E' },
+    { name: 'Spring Boot', icon: 'devicon-spring-plain', category: 'backend', color: '#6DB33F' },
+    { name: 'Node.js', icon: 'devicon-nodejs-plain', category: 'backend', color: '#339933' },
+    { name: 'Express.js', icon: 'devicon-express-original', category: 'backend', color: '#000000' },
+
+    // Database
+    { name: 'PostgreSQL', icon: 'devicon-postgresql-plain', category: 'database', color: '#4169E1' },
+    { name: 'MySQL', icon: 'devicon-mysql-plain', category: 'database', color: '#4479A1' },
+    { name: 'MongoDB', icon: 'devicon-mongodb-plain', category: 'database', color: '#47A248' },
+
+    // DevOps & Tools
+    { name: 'Docker', icon: 'devicon-docker-plain', category: 'devops', color: '#2496ED' },
+    { name: 'Kubernetes', icon: 'devicon-kubernetes-plain', category: 'devops', color: '#326CE5' },
+    { name: 'Git', icon: 'devicon-git-plain', category: 'tools', color: '#F05032' },
+    { name: 'GitHub Actions', icon: 'devicon-github-original', category: 'devops', color: '#2088FF' },
+    { name: 'Keycloak', icon: 'devicon-oauth-plain', category: 'tools', color: '#4D4D4D' }
   ]);
 
   protected readonly profileImage = '/1758729543920.jpg';
@@ -91,7 +130,7 @@ export class App implements OnInit {
     {
       role: 'Consultant',
       company: 'Deloitte',
-      period: 'Dec 2023 - Present',
+      period: 'September 2025 - Present',
       location: 'Bari, Italy',
       description: 'Working on enterprise-level software solutions, implementing modern architectures and best practices. Developing full-stack applications using Java, JavaScript, React, and Spring Framework. Collaborating with international teams to deliver high-quality software products.',
       skills: ['Java', 'JavaScript', 'React', 'React Native', 'Spring Framework', 'Spring Boot', 'SQL', 'Agile'],
@@ -100,7 +139,7 @@ export class App implements OnInit {
     {
       role: 'Custom Software Engineering Analyst',
       company: 'Accenture',
-      period: 'Jun 2023 - Sep 2023',
+      period: 'June 2023 - September 2025',
       location: 'Bari, Puglia, Italy',
       description: 'Developed and maintained enterprise applications using modern tech stack. Implemented authentication and authorization systems using Keycloak. Built RESTful APIs with Java Spring Framework and Node.js. Worked with PostgreSQL databases and TypeScript for type-safe development.',
       skills: ['TypeScript', 'JavaScript', 'Java', 'Spring Framework', 'Node.js', 'Keycloak', 'PostgreSQL', 'REST API'],
@@ -109,7 +148,7 @@ export class App implements OnInit {
     {
       role: 'IT Instructor - Erasmus+ Program',
       company: 'Cultura e Dintorni',
-      period: 'Apr 2021 - May 2021',
+      period: 'April 2021 - May 2021',
       location: 'Martina Franca, Puglia, Italy',
       description: 'Conducted international mobility course entirely in English, preparing students for web development and programming. Taught CMS platforms, web development fundamentals (PHP, HTML, CSS), network protocols, troubleshooting, malware analysis, spyware detection, and cybersecurity best practices.',
       skills: ['JavaScript', 'Node.js', 'Angular', 'PHP', 'HTML', 'CSS', 'Network Security', 'CMS', 'Teaching'],
@@ -155,9 +194,18 @@ export class App implements OnInit {
 
   protected readonly education = signal<Education[]>([
     {
+      degree: 'Bachelor of Science in Software Engineering and Computer Science',
+      gpa: '3.7/4.0',
+      institution: 'POLYTECHNIC UNIVERSITY - Bari',
+      period: '2020 - 2024',
+      location: 'Bary, Italy',
+      thesis: 'Analysis of the Doppler Effect and Compensation Methods in Terrestrial/Non-Terrestrial Network Architectures (NTN)',
+      description: 'I achieved top grades in key technical subjects, including Information Systems Security and Privacy (GPA 4.0), Computer Science for Engineering (GPA 4.0), and Software Engineering and Web Fundamentals (GPA 3.7).'
+    },
+    {
       degree: 'High School Diploma in Computer Science',
       institution: 'IISS "Majorana" - Martina Franca',
-      period: '2013 - 2018',
+      period: '2011 - 2016',
       location: 'Martina Franca, Italy',
       description: 'Specialized in Computer Science and Information Technology'
     }
