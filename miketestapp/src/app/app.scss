@@ -614,12 +614,12 @@
     padding: 0 2rem;
   }
 
-  .about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
+  // .about-content {
+  //   display: grid;
+  //   grid-template-columns: 1fr 1fr;
+  //   gap: 4rem;
+  //   align-items: start;
+  // }
 
   .about-text {
     background: #fff;
@@ -670,8 +670,8 @@
 
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-    gap: 1srem;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
     margin-top: 2rem;
   }
 

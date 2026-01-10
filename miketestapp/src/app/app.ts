@@ -104,6 +104,7 @@ export class App implements OnInit {
     { name: 'React Native', icon: 'devicon-react-original', category: 'frontend', color: '#61DAFB' },
     { name: 'JavaScript', icon: 'devicon-javascript-plain', category: 'frontend', color: '#F7DF1E' },
     { name: 'TypeScript', icon: 'devicon-typescript-plain', category: 'frontend', color: '#3178C6' },
+    { name: 'Vue', icon: 'devicon-vuejs-plain', category: 'frontend', color: '#42B883' },
 
     // Backend
     { name: 'Java', icon: 'devicon-java-plain', category: 'backend', color: '#EA2D2E' },
@@ -129,11 +130,11 @@ export class App implements OnInit {
   protected readonly experiences = signal<Experience[]>([
     {
       role: 'Consultant',
-      company: 'Deloitte',
+      company: 'Deloitte NextHub',
       period: 'September 2025 - Present',
       location: 'Bari, Italy',
-      description: 'Working on enterprise-level software solutions, implementing modern architectures and best practices. Developing full-stack applications using Java, JavaScript, React, and Spring Framework. Collaborating with international teams to deliver high-quality software products.',
-      skills: ['Java', 'JavaScript', 'React', 'React Native', 'Spring Framework', 'Spring Boot', 'SQL', 'Agile'],
+      description: 'I worked on the frontend development of an insurance management system using Angular, supported by AI-assisted coding tools such as Cline, Claude Code and Google Gemini. I also contributed to requirements definition, functional analysis, and the preparation of technical documentation for public tenders.',
+      skills: ['Angular', 'TypeScript', 'AI-assisted Coding', 'Technical Documentation', 'Functional Analysis', 'Requirements Definition'],
       type: 'work'
     },
     {
@@ -141,8 +142,8 @@ export class App implements OnInit {
       company: 'Accenture',
       period: 'June 2023 - September 2025',
       location: 'Bari, Puglia, Italy',
-      description: 'Developed and maintained enterprise applications using modern tech stack. Implemented authentication and authorization systems using Keycloak. Built RESTful APIs with Java Spring Framework and Node.js. Worked with PostgreSQL databases and TypeScript for type-safe development.',
-      skills: ['TypeScript', 'JavaScript', 'Java', 'Spring Framework', 'Node.js', 'Keycloak', 'PostgreSQL', 'REST API'],
+      description: 'I developed a scalable management system for a public institution, implementing the frontend with Vue.js (TypeScript, Bootstrap) and building RESTful APIs with Java and Spring. I designed and maintained PostgreSQL and MongoDB databases, and implemented secure authentication and authorization using Keycloak with JWT, configuring NGINX and Apache as reverse proxies to support microservices and load balancing.',
+      skills: ['Vue.js', 'TypeScript', 'Bootstrap', 'Java', 'Spring Framework', 'Node.js', 'Keycloak', 'PostgreSQL', 'MongoDB', 'NGINX', 'Apache', 'Microservices', 'RESTful APIs'],
       type: 'work'
     },
     {
@@ -150,13 +151,13 @@ export class App implements OnInit {
       company: 'Cultura e Dintorni',
       period: 'April 2021 - May 2021',
       location: 'Martina Franca, Puglia, Italy',
-      description: 'Conducted international mobility course entirely in English, preparing students for web development and programming. Taught CMS platforms, web development fundamentals (PHP, HTML, CSS), network protocols, troubleshooting, malware analysis, spyware detection, and cybersecurity best practices.',
-      skills: ['JavaScript', 'Node.js', 'Angular', 'PHP', 'HTML', 'CSS', 'Network Security', 'CMS', 'Teaching'],
+      description: 'I delivered an International Mobility course in English for Polish Erasmus students, focused on web development, programming, and cybersecurity, combining theoretical lessons with hands-on practical sessions. I designed and taught courses on CMS-based web development (WordPress), programming (Java, PHP, HTML, CSS), networking fundamentals, and cybersecurity principles, including secure coding, vulnerability mitigation, firewall configuration, and malware analysis.',
+      skills: ['Java', 'PHP', 'HTML5', 'CSS3', 'WordPress', 'Networking Fundamentals', 'Cybersecurity'],
       type: 'education'
     },
     {
-      role: 'IT Instructor - Youth Guarantee Program',
-      company: 'WOOVI Italia',
+      role: 'IT Instructor - Garanzia Giovani Program',
+      company: 'WOOM Italia',
       period: 'Oct 2020 - Nov 2020',
       location: 'Martina Franca, Puglia, Italy',
       description: 'Led specialized training course preparing students for national IT certification (Youth Guarantee Program). Covered Microsoft Office suite, CMS website creation, web programming fundamentals (PHP, HTML, CSS), network troubleshooting, routing protocols, malware analysis, and information security.',
@@ -168,15 +169,15 @@ export class App implements OnInit {
       company: 'Cultura e Dintorni',
       period: 'Sep 2020 - Oct 2020',
       location: 'Martina Franca, Puglia, Italy',
-      description: 'Delivered international mobility training program in English, focusing on web development and programming skills. Topics included CMS platforms, fundamental web programming (PHP, HTML, CSS), network troubleshooting, routing protocols, malware studies, and cybersecurity practices.',
+      description: 'I delivered an International Mobility course in English for Polish Erasmus students, focused on web development, programming, and cybersecurity, combining theoretical lessons with hands-on practical sessions. I designed and taught courses on CMS-based web development (WordPress), programming (Java, PHP, HTML, CSS), networking fundamentals, and cybersecurity principles, including secure coding, vulnerability mitigation, firewall configuration, and malware analysis.',
       skills: ['JavaScript', 'Node.js', 'Angular', 'Routing Protocols', 'CMS', 'Cybersecurity', 'English Teaching'],
       type: 'education'
     },
     {
       role: 'Web Master',
       company: 'Crea il tuo Business',
-      period: 'Jan 2019 - Feb 2020',
-      location: 'Crispiano, Italy',
+      period: 'Jan 2019 - Jan 2020',
+      location: 'Chiavari, Italy',
       description: 'Managed end-to-end web solutions for clients. Created cost estimates and proposals, designed small to medium-scale social media marketing campaigns, developed and maintained client websites, designed user retention strategies to build customer loyalty, and produced promotional video content.',
       skills: ['JavaScript', 'Web Design', 'Digital Marketing', 'Social Media', 'Video Production', 'Client Management'],
       type: 'work'
@@ -194,8 +195,8 @@ export class App implements OnInit {
 
   protected readonly education = signal<Education[]>([
     {
-      degree: 'Bachelor of Science in Software Engineering and Computer Science',
-      gpa: '3.7/4.0',
+      degree: 'Bachelor in Software Engineering and Computer Science',
+      gpa: '3.3/4.0',
       institution: 'POLYTECHNIC UNIVERSITY - Bari',
       period: '2020 - 2024',
       location: 'Bary, Italy',
