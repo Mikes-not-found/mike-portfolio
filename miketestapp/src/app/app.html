@@ -1,55 +1,37 @@
-<!-- Global Dynamic Code Background -->
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress">
+  <div class="scroll-bar-fill"></div>
+</div>
+
+<!-- Subtle global code background -->
 <div class="global-code-bg">
-  <!-- Floating Code Symbols -->
   <div class="code-rain-global">
     @for (symbol of codeSymbols; track symbol; let i = $index) {
       <div class="code-symbol-global"
            [style.left.%]="(i * 3.5)"
            [style.animation-delay.s]="i * 0.8"
-           [style.animation-duration.s]="15 + (i % 8) * 3">
+           [style.animation-duration.s]="18 + (i % 8) * 3">
         {{ symbol }}
-      </div>
-    }
-  </div>
-
-  <!-- Binary Background Lines -->
-  <div class="binary-bg-global">
-    @for (i of [0,1,2,3,4,5,6,7,8,9,10,11]; track i) {
-      <div class="binary-line-global" [style.animation-delay.s]="i * 2">
-        @for (j of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]; track j) {
-          <span>{{ j % 2 }}</span>
-        }
-      </div>
-    }
-  </div>
-
-  <!-- Geometric Shapes -->
-  <div class="geometric-shapes-global">
-    @for (shape of ['◆', '●', '■', '▲', '◢', '◣', '▼', '◀', '▶', '★', '☆', '◇']; track shape; let i = $index) {
-      <div class="shape-global"
-           [style.left.%]="5 + (i * 8)"
-           [style.top.%]="10 + (i * 7)"
-           [style.animation-delay.s]="i * 1.5">
-        {{ shape }}
       </div>
     }
   </div>
 </div>
 
+<!-- Navigation -->
 <nav [class.nav-scrolled]="scrollY() > 50">
   <div class="nav-content">
     <div class="logo">MS</div>
 
-    <!-- Desktop Navigation -->
     <ul class="nav-links desktop-nav">
-      <li><a (click)="scrollToSection('home')" (keydown.enter)="scrollToSection('home')" tabindex="0" role="button">Home</a></li>
-      <li><a (click)="scrollToSection('about')" (keydown.enter)="scrollToSection('about')" tabindex="0" role="button">About</a></li>
-      <li><a (click)="scrollToSection('experience')" (keydown.enter)="scrollToSection('experience')" tabindex="0" role="button">Experience</a></li>
-      <li><a (click)="scrollToSection('projects')" (keydown.enter)="scrollToSection('projects')" tabindex="0" role="button">Projects</a></li>
-      <li><a (click)="scrollToSection('contact')" (keydown.enter)="scrollToSection('contact')" tabindex="0" role="button">Contact</a></li>
+      <li><a [class.active]="activeSection() === 'home'" (click)="scrollToSection('home')" (keydown.enter)="scrollToSection('home')" tabindex="0" role="button">Home</a></li>
+      <li><a [class.active]="activeSection() === 'about'" (click)="scrollToSection('about')" (keydown.enter)="scrollToSection('about')" tabindex="0" role="button">About</a></li>
+      <li><a [class.active]="activeSection() === 'experience'" (click)="scrollToSection('experience')" (keydown.enter)="scrollToSection('experience')" tabindex="0" role="button">Experience</a></li>
+      <li><a [class.active]="activeSection() === 'projects'" (click)="scrollToSection('projects')" (keydown.enter)="scrollToSection('projects')" tabindex="0" role="button">Projects</a></li>
+      <li><a [class.active]="activeSection() === 'contact'" (click)="scrollToSection('contact')" (keydown.enter)="scrollToSection('contact')" tabindex="0" role="button">Contact</a></li>
     </ul>
 
-    <!-- Mobile Menu Button -->
+    <button class="cta-nav-btn" (click)="scrollToSection('contact')">Get In Touch</button>
+
     <button class="mobile-menu-btn" (click)="toggleMobileMenu()" [class.active]="mobileMenuOpen()" aria-label="Toggle menu">
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
@@ -78,113 +60,99 @@
   </ul>
 </div>
 
+<!-- Hero Section -->
 <section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-
-  <!-- Floating Code Symbols -->
-  <div class="code-rain">
-    @for (symbol of codeSymbols.slice(0, 20); track symbol; let i = $index) {
-      <div class="code-symbol"
-           [style.left.%]="(i * 5)"
-           [style.animation-delay.s]="i * 0.5"
-           [style.animation-duration.s]="10 + (i % 5) * 2">
-        {{ symbol }}
-      </div>
-    }
-  </div>
-
-  <!-- Binary Background -->
-  <div class="binary-bg">
-    @for (i of [0,1,2,3,4,5,6,7,8]; track i) {
-      <div class="binary-line" [style.animation-delay.s]="i * 1.5">
-        @for (j of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; track j) {
-          <span>{{ j % 2 }}</span>
-        }
-      </div>
-    }
-  </div>
-
-  <!-- Geometric Shapes -->
-  <div class="geometric-shapes">
-    @for (shape of ['◆', '●', '■', '▲', '◢', '◣']; track shape; let i = $index) {
-      <div class="shape"
-           [style.left.%]="10 + (i * 15)"
-           [style.top.%]="20 + (i * 10)"
-           [style.animation-delay.s]="i * 0.8">
-        {{ shape }}
-      </div>
-    }
-  </div>
+  <!-- Gradient Orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <!-- Dot grid overlay -->
+  <div class="hero-grid"></div>
 
   <div class="hero-content">
-    <img [src]="profileImage" [alt]="name() + ' profile picture'" class="profile-image" />
-    <h1>{{ name() }}</h1>
-    <h2>{{ role() }}</h2>
-    <p>
-      {{ professionalSummary() }}
-    </p>
+    <div class="available-badge">
+      <span class="pulse-dot"></span>
+      Available for opportunities
+    </div>
+
+    <div class="profile-image-wrap">
+      <img [src]="profileImage" [alt]="name() + ' profile picture'" class="profile-image" />
+      <div class="profile-ring"></div>
+    </div>
+
+    <h1 class="hero-name">{{ name() }}</h1>
+
+    <div class="hero-role-wrap">
+      <span class="typewriter-text">{{ displayedRole() }}</span><span class="cursor">|</span>
+    </div>
+
+    <p class="hero-bio">{{ professionalSummary() }}</p>
+
     <div class="cta-buttons">
       <button class="btn btn-primary" (click)="scrollToSection('projects')">
-        Explore Projects
+        <span>Explore Projects</span>
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
       </button>
-      <button class="btn btn-outline" (click)="scrollToSection('contact')">
-        Get In Touch
-      </button>
+      <button class="btn btn-outline" (click)="scrollToSection('contact')">Get In Touch</button>
     </div>
   </div>
+
+  <button class="scroll-indicator" (click)="scrollToSection('about')" aria-label="Scroll to about section">
+    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
 </section>
 
+<!-- About / Skills Section -->
 <section id="about">
   <div class="about-container">
-    <div class="about-content">
-      <!-- <div class="about-text reveal">
-        <h3>Passion for Code</h3>
-        <p>
-          Full Stack Developer with a strong passion for creating modern, scalable, and high-performance web applications.
-          I specialize in cloud-native architectures and DevOps methodologies, delivering enterprise-level solutions.
-        </p>
-        <p>
-          Every project is an opportunity to learn new technologies and refine my skills.
-          I strongly believe in the power of clean code, best practices, and effective team collaboration.
-        </p>
-        <p>
-          My mission is to transform complex problems into elegant solutions that users love to interact with,
-          combining technical excellence with user-centered design.
-        </p>
-      </div> -->
-      <div class="skills-container reveal">
-        <h3>Technical Skills</h3>
-        <div class="skills-grid">
-          @for (skill of skills(); track skill.name) {
-            <div class="skill-card" [attr.data-category]="skill.category">
-              <div class="skill-icon-wrapper">
+    <div class="section-header">
+      <span class="section-label">TECH STACK</span>
+      <h2 class="section-title">Technical Skills</h2>
+    </div>
+
+    <div class="skills-outer">
+      <div class="skills-grid">
+        @for (skill of skills(); track skill.name) {
+          <div class="skill-card" [attr.data-category]="skill.category">
+            <div class="skill-icon-wrapper">
+              @if (skill.iconType === 'emoji') {
+                <span class="skill-emoji-icon">{{ skill.icon }}</span>
+              } @else {
                 <i [class]="skill.icon + ' colored'" [style.color]="skill.color"></i>
-              </div>
-              <div class="skill-name">{{ skill.name }}</div>
-              <div class="skill-glow" [style.background]="'radial-gradient(circle, ' + skill.color + '30, transparent)'"></div>
+              }
             </div>
-          }
-        </div>
+            <div class="skill-name">{{ skill.name }}</div>
+            <span class="skill-category-badge">{{ skill.category }}</span>
+            <div class="skill-glow" [style.background]="'radial-gradient(circle, ' + skill.color + '25, transparent)'"></div>
+          </div>
+        }
       </div>
     </div>
   </div>
 </section>
 
+<!-- Experience Section -->
 <section id="experience">
   <div class="experience-container">
-    <div class="experience-header reveal">
+    <div class="section-header">
+      <span class="section-label">CAREER PATH</span>
       <h2 class="section-title">Professional Experience</h2>
     </div>
 
     <div class="timeline">
       @for (exp of experiences(); track exp.company + exp.period) {
-        <div class="timeline-item reveal">
-          <div class="timeline-content" [class.work]="exp.type === 'work'" [class.education]="exp.type === 'education'">
+        <div class="timeline-item">
+          <div class="timeline-content" [class.work]="exp.type === 'work'" [class.edu]="exp.type === 'education'">
+            <div class="timeline-type-badge">{{ exp.type === 'work' ? '💼 Work' : '🎓 Education' }}</div>
             <h3 class="timeline-role">{{ exp.role }}</h3>
             <div class="timeline-company">{{ exp.company }}</div>
-            <div class="timeline-period">{{ exp.period }}</div>
-            <div class="timeline-location">{{ exp.location }}</div>
+            <div class="timeline-meta">
+              <span class="timeline-period">{{ exp.period }}</span>
+              <span class="timeline-sep">·</span>
+              <span class="timeline-location">{{ exp.location }}</span>
+            </div>
             <p class="timeline-description">{{ exp.description }}</p>
             @if (exp.skills.length > 0) {
               <div class="timeline-skills">
@@ -199,51 +167,54 @@
       }
     </div>
 
-    <div class="certifications reveal">
-      <h3 class="section-title">Certifications</h3>
-      <div class="cert-grid">
-        @for (cert of certifications(); track cert.name) {
-          <div class="cert-card">
-            <div class="cert-logo">{{ cert.logo }}</div>
-            <div class="cert-name">{{ cert.name }}</div>
-            <div class="cert-issuer">{{ cert.issuer }}</div>
-            <div class="cert-date">{{ cert.date }}</div>
-            @if (cert.credentialUrl) {
-              <a [href]="cert.credentialUrl" target="_blank" rel="noopener" class="cert-link">
-                View Credential →
-              </a>
-            }
-          </div>
-        }
-      </div>
+    <div class="section-header" style="margin-top: 5rem;">
+      <span class="section-label">CREDENTIALS</span>
+      <h2 class="section-title">Certifications</h2>
+    </div>
+    <div class="cert-grid">
+      @for (cert of certifications(); track cert.name) {
+        <div class="cert-card">
+          <div class="cert-logo">{{ cert.logo }}</div>
+          <div class="cert-name">{{ cert.name }}</div>
+          <div class="cert-issuer">{{ cert.issuer }}</div>
+          <div class="cert-date">{{ cert.date }}</div>
+          @if (cert.credentialUrl) {
+            <a [href]="cert.credentialUrl" target="_blank" rel="noopener" class="cert-link">
+              View Credential →
+            </a>
+          }
+        </div>
+      }
     </div>
 
     @if (education().length > 0) {
-      <div class="education-section reveal">
-        <h3 class="section-title">Education</h3>
-        <div class="education-grid">
-          @for (edu of education(); track edu.degree) {
-            <div class="education-card">
-              <h4 class="education-degree">{{ edu.degree }}</h4>
-              <div class="education-institution">{{ edu.institution }} <br> {{ edu.period }}</div>
-              <div class="education-thesis">{{ edu.thesis }}</div>
-              @if (edu.gpa) {
-                <div class="education-gpa">GPA: {{ edu.gpa }}</div>
-              }
-              <div class="education-period"></div>
-              @if (edu.description) {
-                <p class="education-description">{{ edu.description }}</p>
-              }
-            </div>
-          }
-        </div>
+      <div class="section-header" style="margin-top: 5rem;">
+        <span class="section-label">ACADEMIC</span>
+        <h2 class="section-title">Education</h2>
+      </div>
+      <div class="education-grid">
+        @for (edu of education(); track edu.degree) {
+          <div class="education-card">
+            <h4 class="education-degree">{{ edu.degree }}</h4>
+            <div class="education-institution">{{ edu.institution }} &nbsp;·&nbsp; {{ edu.period }}</div>
+            @if (edu.thesis) {
+              <div class="education-thesis">📄 {{ edu.thesis }}</div>
+            }
+            @if (edu.gpa) {
+              <div class="education-gpa">GPA: {{ edu.gpa }}</div>
+            }
+            @if (edu.description) {
+              <p class="education-description">{{ edu.description }}</p>
+            }
+          </div>
+        }
       </div>
     }
   </div>
 </section>
 
+<!-- Projects Section -->
 <section id="projects">
-  <!-- Projects Section Code Animation -->
   <div class="section-code-bg">
     <div class="code-rain-section">
       @for (symbol of codeSymbols.slice(0, 15); track symbol; let i = $index) {
@@ -255,30 +226,26 @@
         </div>
       }
     </div>
-    <div class="binary-bg-section">
-      @for (i of [0,1,2,3,4,5]; track i) {
-        <div class="binary-line-section" [style.animation-delay.s]="i * 1.5">
-          @for (j of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; track j) {
-            <span>{{ j % 2 }}</span>
-          }
-        </div>
-      }
-    </div>
   </div>
 
   <div class="projects-container">
-    <h2 class="section-title reveal">Featured Projects</h2>
+    <div class="section-header">
+      <span class="section-label section-label--light">PORTFOLIO</span>
+      <h2 class="section-title section-title--light">Featured Projects</h2>
+    </div>
     <div class="projects-grid">
-      @for (project of projects(); track project.title) {
-        <div class="project-card reveal">
+      @for (project of projects(); track project.title; let i = $index) {
+        <div class="project-card">
           @if (project.image && project.image.startsWith('http')) {
-            <div class="project-icon">
+            <div class="project-image">
               <img [src]="project.image" [alt]="project.title + ' preview'" loading="lazy" />
+              <div class="project-image-overlay"></div>
             </div>
           } @else {
-            <div class="project-icon emoji">{{ project.image }}</div>
+            <div class="project-emoji">{{ project.image }}</div>
           }
           <div class="project-content">
+            <div class="project-num">0{{ i + 1 }}</div>
             <h3>{{ project.title }}</h3>
             <p>{{ project.description }}</p>
             <div class="tech-tags">
@@ -288,15 +255,14 @@
             </div>
             <div class="project-links">
               @if (project.github) {
-                <a [href]="project.github" target="_blank" rel="noopener">
-                  <span>GitHub</span>
-                  <span>→</span>
+                <a [href]="project.github" target="_blank" rel="noopener" class="project-link">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  GitHub
                 </a>
               }
               @if (project.demo) {
-                <a [href]="project.demo" target="_blank" rel="noopener">
-                  <span>Live Demo</span>
-                  <span>→</span>
+                <a [href]="project.demo" target="_blank" rel="noopener" class="project-link project-link--demo">
+                  Live Demo →
                 </a>
               }
             </div>
@@ -307,55 +273,53 @@
   </div>
 </section>
 
+<!-- Contact Section -->
 <section id="contact">
-  <!-- Contact Section Code Animation -->
-  <div class="section-code-bg">
-    <div class="code-rain-section">
-      @for (symbol of codeSymbols.slice(15, 25); track symbol; let i = $index) {
-        <div class="code-symbol-section"
-             [style.left.%]="(i * 9.5)"
-             [style.animation-delay.s]="i * 0.5"
-             [style.animation-duration.s]="10 + (i % 5) * 2">
-          {{ symbol }}
-        </div>
-      }
-    </div>
-    <div class="geometric-shapes-section">
-      @for (shape of ['◆', '●', '■', '▲', '◢', '◣', '▼', '◀']; track shape; let i = $index) {
-        <div class="shape-section"
-             [style.left.%]="8 + (i * 12)"
-             [style.top.%]="15 + (i * 10)"
-             [style.animation-delay.s]="i * 1.2">
-          {{ shape }}
-        </div>
-      }
-    </div>
-  </div>
+  <div class="contact-orb contact-orb-1"></div>
+  <div class="contact-orb contact-orb-2"></div>
 
   <div class="contact-container">
-    <h2 class="section-title reveal">Get in Touch</h2>
-    <div class="contact-links reveal">
-      <a href="https://github.com/Mikes-not-found" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub Profile">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
-      </a>
-      <a href="mailto:michelescarciglia20@gmail.com" title="Email" aria-label="Send Email">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
-        </svg>
-      </a>
-      <a href="https://www.linkedin.com/in/michele-scarciglia-64768b154/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn Profile">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
-        </svg>
-      </a>
+    <div class="contact-inner">
+      <div class="section-header">
+        <span class="section-label section-label--light">REACH OUT</span>
+        <h2 class="section-title section-title--light">Let's Work Together</h2>
+      </div>
+      <p class="contact-description">
+        Have a project in mind or want to discuss opportunities?<br />
+        I'm always open to interesting conversations.
+      </p>
+      <div class="contact-links">
+        <a href="https://github.com/Mikes-not-found" target="_blank" rel="noopener" class="contact-link" title="GitHub" aria-label="GitHub Profile">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </div>
+          <span>GitHub</span>
+        </a>
+        <a href="mailto:michelescarciglia20@gmail.com" class="contact-link" title="Email" aria-label="Send Email">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+            </svg>
+          </div>
+          <span>Email</span>
+        </a>
+        <a href="https://www.linkedin.com/in/michele-scarciglia-64768b154/" target="_blank" rel="noopener" class="contact-link" title="LinkedIn" aria-label="LinkedIn Profile">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+            </svg>
+          </div>
+          <span>LinkedIn</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>&copy; 2025 {{ name() }}.</p>
+  <p>Designed & Built by {{ name() }} &nbsp;·&nbsp; &copy; 2025</p>
 </footer>
 
 <router-outlet />
