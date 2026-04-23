@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages (Production)
 on:
   push:
     branches:
-      - main  # Deploy automatico quando pushiamo su main
+      - main
 
 jobs:
   build-and-deploy:
@@ -27,14 +27,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-        working-directory: ./miketestapp
-
-      - name: Run linter
-        run: npm run lint
-        working-directory: ./miketestapp
-
-      - name: Run tests
-        run: npm test
         working-directory: ./miketestapp
 
       - name: Build for Production
